@@ -23,33 +23,35 @@ display exit message
 
 
 def main():
-    MENU = """C - Convert Celsius to Fahrenheit
+    menu = """C - Convert Celsius to Fahrenheit
     F - Convert Fahrenheit to Celsius
     Q - Quit"""
-    print(MENU)
+    print(menu)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "C":
-            calculate_celsius()
+            celsius = float(input("Celsius: "))
+            fahrenheit = calculate_celsius(celsius)
+            print("Result: {:.2f} F".format(fahrenheit))
         elif choice == "F":
-            calculate_fahrenheit()
+            fahrenheit = float(input("Fahrenheit: "))
+            celsius = calculate_fahrenheit(fahrenheit)
+            print("Result: {:.2f} C".format(celsius))
         else:
             print("Invalid option")
-        print(MENU)
+        print(menu)
         choice = input(">>> ").upper()
     print("Thank you.")
 
 
-def calculate_fahrenheit():
-    fahrenheit = float(input("Fahrenheit: "))
+def calculate_fahrenheit(fahrenheit):
     celsius = 5 / 9 * (fahrenheit - 32)
-    print("Result: {:.2f} C".format(celsius))
+    return celsius
 
 
-def calculate_celsius():
-    celsius = float(input("Celsius: "))
+def calculate_celsius(celsius):
     fahrenheit = celsius * 9.0 / 5 + 32
-    print("Result: {:.2f} F".format(fahrenheit))
+    return fahrenheit
 
 
 main()
