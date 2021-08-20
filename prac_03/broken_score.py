@@ -19,13 +19,25 @@ else
 
 """
 
+import random
 
-score = float(input("Enter score: "))
-if 50 > score >= 0:
-    print("Bad")
-elif 50 <= score < 90:
-    print("Pass")
-elif 90 <= score <= 100:
-    print("Excellent")
-else:
-    print("Invalid score entered.")
+
+def main():
+    score = float(input('Enter score: '))
+    print(get_status(score))
+    score = random.randint(0, 101)
+    print("Score: {} = ".format(score), get_status(score))
+
+
+def get_status(score):
+    if 50 > score >= 0:
+        return "Bad"
+    elif 50 <= score < 90:
+        return "Pass"
+    elif 90 <= score <= 100:
+        return "Excellent"
+    else:
+        return "Invalid score entered."
+
+
+main()
