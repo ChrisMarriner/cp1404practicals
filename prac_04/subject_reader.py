@@ -1,4 +1,5 @@
 """
+Christopher Marriner
 CP1404/CP5632 Practical
 Data file -> lists program
 """
@@ -13,6 +14,7 @@ def main():
 
 def get_data():
     """Read data from file formatted like: subject,lecturer,number of students."""
+    data = []
     input_file = open(FILENAME)
     for line in input_file:
         print(line)  # See what a line looks like
@@ -23,7 +25,9 @@ def get_data():
         parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
         print(parts)  # See if that worked
         print("----------")
+        data.append(parts)
     input_file.close()
+    return data
 
 
 main()
