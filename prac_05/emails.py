@@ -20,9 +20,7 @@ def main():
     name_email_dict = {}
     email = input("Email: ")
     while email != "":
-        prefix = email.split('@')[0]
-        parts = prefix.split('.')
-        name = " ".join(parts).title()
+        name = get_names_from_email(email)
         user_input = input("Is your name {}? (Y/n) ".format(name))
         if user_input.upper() != "Y" and user_input != "":
             name = input("Name: ")
@@ -30,4 +28,13 @@ def main():
         email = input("Email: ")
     for email, name in name_email_dict.items():
         print("{} ({})".format(name, email))
+
+
+def get_names_from_email(email):
+    prefix = email.split('@')[0]
+    parts = prefix.split('.')
+    name = " ".join(parts).title()
+    return name
+
+
 main()
