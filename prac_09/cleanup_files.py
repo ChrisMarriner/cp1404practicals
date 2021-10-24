@@ -10,18 +10,13 @@ import os
 def main():
     """Demo os module functions."""
     print("Starting directory is: {}".format(os.getcwd()))
-    # Change to desired directory
     os.chdir('Lyrics/Christmas')
-    # Print a list of all files in current directory
     print("Files in {}:\n{}\n".format(os.getcwd(), os.listdir('.')))
-    # Make a new directory
     try:
         os.mkdir('temp')
     except FileExistsError:
         pass
-    # Loop through each file in the (current) directory
     for filename in os.listdir('.'):
-        # Ignore directories, just process files
         if os.path.isdir(filename):
             continue
         new_name = get_fixed_filename(filename)
@@ -30,6 +25,10 @@ def main():
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
+    string = ""
+    for character in enumerate(filename):
+        new_string = string + character
+        print(new_string)
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
     return new_name
 
@@ -48,5 +47,5 @@ def demo_walk(filenames, directory_name):
         os.rename(full_name, new_name)
 
 
-# main()
-demo_walk()
+main()
+# demo_walk()
